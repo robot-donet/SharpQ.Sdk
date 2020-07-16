@@ -13,10 +13,10 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 	/// <summary>
 	/// 表示 CoolQ 应用程序的 CQ码内容 的模型类
 	/// </summary>
-	public class CQCodeContent : IGetMessage, IDictionary<CQCodeKey, CQCodeValue>, IEquatable<CQCodeContent>
+	public class CQCodeContent : IGetMessage, IDictionary<CQCodeKeys, CQCodeValue>, IEquatable<CQCodeContent>
 	{
 		#region --字段--
-		private readonly Dictionary<CQCodeKey, CQCodeValue> _dict;
+		private readonly Dictionary<CQCodeKeys, CQCodeValue> _dict;
 		#endregion
 
 		#region --属性--
@@ -27,7 +27,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <returns>与指定的键相关联的值。 如果指定键未找到，则 Get 操作引发 <see cref="KeyNotFoundException"/>，而 Set 操作创建一个带指定键的新元素</returns>
 		/// <exception cref="ArgumentNullException">key 为 null</exception>
 		/// <exception cref="KeyNotFoundException">已检索该属性且集合中不存在 key</exception>
-		public CQCodeValue this[CQCodeKey key]
+		public CQCodeValue this[CQCodeKeys key]
 		{
 			get => this._dict[key];
 			set => this._dict[key] = value;
@@ -35,7 +35,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <summary>
 		/// 获得一个包含 <see cref="CQCodeContent"/> 中的键的集合
 		/// </summary>
-		public ICollection<CQCodeKey> Keys => this._dict.Keys;
+		public ICollection<CQCodeKeys> Keys => this._dict.Keys;
 		/// <summary>
 		/// 获得一个包含 <see cref="CQCodeContent"/> 中的值的集合
 		/// </summary>
@@ -47,7 +47,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <summary>
 		/// 获取一个值，该值指示 <see cref="CQCodeContent"/> 是否为只读
 		/// </summary>
-		bool ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>.IsReadOnly => ((ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>)this._dict).IsReadOnly;
+		bool ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.IsReadOnly => ((ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>)this._dict).IsReadOnly;
 		#endregion
 
 		#region --构造函数--
@@ -64,7 +64,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <exception cref="ArgumentOutOfRangeException">capacity 小于 0</exception>
 		public CQCodeContent (int capacity)
 		{
-			this._dict = new Dictionary<CQCodeKey, CQCodeValue> (capacity);
+			this._dict = new Dictionary<CQCodeKeys, CQCodeValue> (capacity);
 		}
 		#endregion
 
@@ -75,7 +75,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <param name="key">要添加的元素的键</param>
 		/// <param name="value">要添加的元素的值</param>
 		/// <exception cref="ArgumentNullException">value 为 null</exception>
-		public void Add (CQCodeKey key, CQCodeValue value)
+		public void Add (CQCodeKeys key, CQCodeValue value)
 		{
 			if (value is null)
 			{
@@ -89,7 +89,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		/// <param name="key">要在 <see cref="CQCodeContent"/> 中定位的键</param>
 		/// <returns>如果 <see cref="CQCodeContent"/> 包含具有键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
-		public bool ContainsKey (CQCodeKey key)
+		public bool ContainsKey (CQCodeKeys key)
 		{
 			return this._dict.ContainsKey (key);
 		}
@@ -98,7 +98,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		/// <param name="key">要移除的元素的键</param>
 		/// <returns>如果该元素已成功移除，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="CQCodeContent"/> 中没有找到 key，此方法也会返回 <see langword="false"/></returns>
-		public bool Remove (CQCodeKey key)
+		public bool Remove (CQCodeKeys key)
 		{
 			return this._dict.Remove (key);
 		}
@@ -109,7 +109,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <param name="value">当此方法返回时，如果找到指定键，则返回与该键相关联的值；否则，将返回 value 参数的类型的默认值。 此参数未经初始化即被传递</param>
 		/// <returns>如果 <see cref="CQCodeContent"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则，为 <see langword="false"/></returns>
 		/// <exception cref="ArgumentNullException">key 为 null</exception>
-		public bool TryGetValue (CQCodeKey key, out CQCodeValue value)
+		public bool TryGetValue (CQCodeKeys key, out CQCodeValue value)
 		{
 			return this._dict.TryGetValue (key, out value);
 		}
@@ -124,7 +124,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// 返回一个循环访问集合的枚举器
 		/// </summary>
 		/// <returns>用于循环访问集合的枚举数</returns>
-		public IEnumerator<KeyValuePair<CQCodeKey, CQCodeValue>> GetEnumerator ()
+		public IEnumerator<KeyValuePair<CQCodeKeys, CQCodeValue>> GetEnumerator ()
 		{
 			return this._dict.GetEnumerator ();
 		}
@@ -169,7 +169,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 
 			for (int i = 0; i < this.Count; i++)
 			{
-				CQCodeKey key = this.Keys.ElementAt (i);
+				CQCodeKeys key = this.Keys.ElementAt (i);
 				CQCodeValue value = this.Values.ElementAt (i);
 
 				builder.Append ($"{key.GetDescription ()}={value}");
@@ -193,7 +193,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// 将某项添加到 <see cref="ICollection{T}"/> 中
 		/// </summary>
 		/// <param name="item">要添加到 <see cref="ICollection{T}"/> 的对象</param>
-		void ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>.Add (KeyValuePair<CQCodeKey, CQCodeValue> item)
+		void ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.Add (KeyValuePair<CQCodeKeys, CQCodeValue> item)
 		{
 			this.Add (item.Key, item.Value);
 		}
@@ -204,27 +204,27 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <param name="arrayIndex">array 中从零开始的索引，从此处开始复制</param>
 		/// <exception cref="ArgumentNullException">array 为 null</exception>
 		/// <exception cref="ArgumentOutOfRangeException">arrayIndex 小于 0</exception>
-		void ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>.CopyTo (KeyValuePair<CQCodeKey, CQCodeValue>[] array, int arrayIndex)
+		void ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.CopyTo (KeyValuePair<CQCodeKeys, CQCodeValue>[] array, int arrayIndex)
 		{
-			((ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>)this._dict).CopyTo (array, arrayIndex);
+			((ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>)this._dict).CopyTo (array, arrayIndex);
 		}
 		/// <summary>
 		/// 从 <see cref="ICollection{T}"/> 中移除特定对象的第一个匹配项
 		/// </summary>
 		/// <param name="item">要从 <see cref="ICollection{T}"/> 中删除的对象</param>
 		/// <returns>如果从 <see cref="ICollection{T}"/> 中成功移除 item，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="ICollection{T}"/> 中没有找到 item，该方法也会返回 <see langword="false"/></returns>
-		bool ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>.Remove (KeyValuePair<CQCodeKey, CQCodeValue> item)
+		bool ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.Remove (KeyValuePair<CQCodeKeys, CQCodeValue> item)
 		{
-			return ((ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>)this._dict).Remove (item);
+			return ((ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>)this._dict).Remove (item);
 		}
 		/// <summary>
 		/// 确定 <see cref="ICollection{T}"/> 是否包含特定值
 		/// </summary>
 		/// <param name="item">要在 <see cref="ICollection{T}"/> 中定位的对象</param>
 		/// <returns>如果在 <see cref="ICollection{T}"/> 中找到 item，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
-		bool ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>.Contains (KeyValuePair<CQCodeKey, CQCodeValue> item)
+		bool ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.Contains (KeyValuePair<CQCodeKeys, CQCodeValue> item)
 		{
-			return ((ICollection<KeyValuePair<CQCodeKey, CQCodeValue>>)this._dict).Contains (item);
+			return ((ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>)this._dict).Contains (item);
 		}
 		/// <summary>
 		/// 返回一个循环访问集合的枚举器
@@ -232,7 +232,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <returns>用于循环访问集合的枚举数</returns>
 		IEnumerator IEnumerable.GetEnumerator ()
 		{
-			return ((IEnumerable<KeyValuePair<CQCodeKey, CQCodeValue>>)this).GetEnumerator ();
+			return ((IEnumerable<KeyValuePair<CQCodeKeys, CQCodeValue>>)this).GetEnumerator ();
 		}
 		#endregion
 

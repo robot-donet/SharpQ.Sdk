@@ -64,6 +64,8 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		{
 			this._function = function;
 			this._content = content ?? new CQCodeContent ();
+
+			this.SetProperty (this._content);
 		}
 		#endregion
 
@@ -133,12 +135,17 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 
 		#region --私有方法--
 		/// <summary>
-		/// 获取字符串中的 CQ码 类型, 设置到当前实例中并返回
+		/// 当在派生类中重写时, 设置必要的属性值
+		/// </summary>
+		/// <param name="content">要设置的 <see cref="CQCodeContent"/></param>
+		protected virtual void SetProperty (CQCodeContent content)
+		{ }
+		/// <summary>
+		/// 获取字符串中的 CQ码 类型, 设置到当前实例中
 		/// </summary>
 		/// <param name="str">要解析的字符串</param>
-		/// <returns>如果解析成功返回指定的 <see cref="CQCodeFunctions"/> 枚举值, 否则返回 <see cref="CQCodeFunctions.Unknown"/></returns>
 		/// <exception cref="FormatException">str 不符合 CQ码 格式</exception>
-		protected virtual CQCodeFunctions GetFunction (string str)
+		private void GetFunction (string str)
 		{
 			Match funMatch = CQCode._funRegex.Match (str);
 			if (!funMatch.Success)
@@ -152,16 +159,13 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 				this._function = CQCodeFunctions.Unknown;
 			}
 			#endregion
-
-			return this._function;
 		}
 		/// <summary>
-		/// 获取字符串中的 CQ码 内容, 设置到当前实例中并返回
+		/// 获取字符串中的 CQ码 内容, 设置到当前实例中
 		/// </summary>
 		/// <param name="str">要解析的字符串</param>
-		/// <returns>如果解析成功返回 <see cref="CQCodeContent"/> 对象, 否则返回 <see langword="null"/></returns>
 		/// <exception cref="FormatException">str 不符合 CQ码 格式</exception>
-		protected virtual CQCodeContent GetContent (string str)
+		private void GetContent (string str)
 		{
 			Match funMatch = CQCode._funRegex.Match (str);
 			if (!funMatch.Success)
@@ -175,7 +179,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			foreach (Match item in contentCollection)
 			{
 
-				if (!Enum.TryParse (item.Groups[1].Value, true, out CQCodeKey key))
+				if (!Enum.TryParse (item.Groups[1].Value, true, out CQCodeKeys key))
 				{
 					throw new ArgumentException ($"解析到未知的键: {item.Groups[1].Value}", nameof (str));
 				}
@@ -184,7 +188,8 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			}
 			#endregion
 
-			return this._content;
+			// 设置子类属性
+			this.SetProperty (this._content);
 		}
 		#endregion
 

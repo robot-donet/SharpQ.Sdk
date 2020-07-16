@@ -11,11 +11,15 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 	/// </summary>
 	public sealed class CQCodeAt : CQCode
 	{
+		#region --字段--
+		private QQ _qq;
+		#endregion
+
 		#region --属性--
 		/// <summary>
 		/// 获取当前实例的 QQ 属性
 		/// </summary>
-		public QQ QQ => new QQ (this.Api, this.Content[CQCodeKey.QQ]);
+		public QQ QQ => this._qq;
 		#endregion
 
 		#region --构造函数--
@@ -36,7 +40,21 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		public CQCodeAt (CQApi api, long qq)
 			: base (api, CQCodeFunctions.At, null)
 		{
-			this.Content.Add (CQCodeKey.QQ, qq);
+			this.Content.Add (CQCodeKeys.Qq, qq);
+		}
+		#endregion
+
+		#region --私有方法--
+		/// <summary>
+		/// 设置必要的属性值
+		/// </summary>
+		/// <param name="content">要设置的 <see cref="CQCodeContent"/></param>
+		protected override void SetProperty (CQCodeContent content)
+		{
+			if (content.ContainsKey(CQCodeKeys.Qq))
+			{
+				this._qq = new QQ (this.Api, content[CQCodeKeys.Qq]);
+			}
 		}
 		#endregion
 	}

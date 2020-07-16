@@ -10,7 +10,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 	/// <summary>
 	/// 表示 CoolQ 应用程序的 CQ码键 的枚举
 	/// </summary>
-	public enum CQCodeKey
+	public enum CQCodeKeys
 	{
 		/// <summary>
 		/// 表示 "id" 键
@@ -21,7 +21,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// 表示 "qq" 键
 		/// </summary>
 		[Description ("qq")]
-		QQ,
+		Qq,
 		/// <summary>
 		/// 表示 "file" 键
 		/// </summary>

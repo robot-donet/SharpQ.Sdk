@@ -29,7 +29,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		public CQCodeAtAll (CQApi api)
 			: base (api, CQCodeFunctions.At, null)
 		{
-			this.Content.Add (CQCodeKey.QQ, "all");
+			this.Content.Add (CQCodeKeys.Qq, "all");
 		} 
 		#endregion
 	}
