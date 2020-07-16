@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!--项目-->
+	<PropertyGroup>
+		<TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+	</PropertyGroup>
+	
+	<!--编译-->
+	<PropertyGroup>
+		<Platforms>x86</Platforms>
+		<DocumentationFile>D:\文稿\robot-donet\SharpQ.Sdk\src\SharpQ.Sdk\SharpQ.Sdk\SharpQ.Sdk.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<!--打包-->
+	<PropertyGroup>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>JieGG</Authors>
+		<Company>robot-net</Company>
+		<Description>SharpQ 的 Sdk 依赖项目</Description>
+	</PropertyGroup>
+
+</Project>
