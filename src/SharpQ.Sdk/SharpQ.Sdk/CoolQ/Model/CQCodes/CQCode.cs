@@ -1,4 +1,5 @@
-﻿using SharpQ.Sdk.Utility;
+﻿using SharpQ.Sdk.CoolQ.Interface;
+using SharpQ.Sdk.Utility;
 
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,12 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 	/// <summary>
 	/// 表示 CoolQ 应用程序的 CQ码 的模型类
 	/// </summary>
-	public class CQCode : BasisModel, IEquatable<CQCode>
+	public class CQCode : IGetMessage, IEquatable<CQCode>
 	{
 		#region --字段--
 		private string _orginalString;
 		private CQCodeFunctions _function;
-		private readonly CQCodeContent _content;
+		private readonly CQCodeDictionary _dictionary;
 		private static readonly Regex _funRegex = new Regex (@"\[CQ:([A-Za-z]*)(?:(,[^\[\]]+))?\]", RegexOptions.Compiled);
 		private static readonly Regex _kvRegex = new Regex (@",([A-Za-z]+)=([^,\[\]]+)", RegexOptions.Compiled);
 		#endregion
@@ -29,20 +30,19 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		public virtual CQCodeFunctions Function => _function;
 		/// <summary>
-		/// 获取当前实例的内容
+		/// 获取当前实例的键值对
 		/// </summary>
-		public CQCodeContent Content => _content;
+		public CQCodeDictionary Dictionary => _dictionary;
 		#endregion
 
 		#region --构造函数--
 		/// <summary>
-		/// 使用指定格式的字符串来初始化 <see cref="CQCode"/> 类的新实例, 并且持有用于扩展方法的 <see cref="CQApi"/> 实例
+		/// 使用指定格式的字符串来初始化 <see cref="CQCode"/> 类的新实例
 		/// </summary>
-		/// <param name="api">绑定于当前实例的 <see cref="CQApi"/> 对象</param>
 		/// <param name="text">绑定于当前实例的字符串</param>
-		/// <exception cref="ArgumentNullException">api 或 text 为 null</exception>
-		public CQCode (CQApi api, string text)
-			: this (api, CQCodeFunctions.Unknown, null)
+		/// <exception cref="ArgumentNullException">text 为 null</exception>
+		public CQCode (string text)
+			: this (CQCodeFunctions.Unknown, null)
 		{
 			if (text is null)
 			{
@@ -54,18 +54,14 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			this.GetContent (this._orginalString);
 		}
 		/// <summary>
-		/// 使用指定CQ码功能和对应的键值对初始化 <see cref="CQCode"/>  类的新实例, 并且持有用于扩展方法的 <see cref="CQApi"/> 实例
+		/// 使用指定CQ码功能和对应的键值对初始化 <see cref="CQCode"/>  类的新实例
 		/// </summary>
-		/// <param name="api">绑定于当前实例的 <see cref="CQApi"/> 对象</param>
 		/// <param name="function">指定当前实例功能的 <see cref="CQCodeFunctions"/></param>
 		/// <param name="content">指定当前实例的内容键值对</param>
-		public CQCode (CQApi api, CQCodeFunctions function, CQCodeContent content)
-			: base (api)
+		public CQCode (CQCodeFunctions function, CQCodeDictionary content)
 		{
 			this._function = function;
-			this._content = content ?? new CQCodeContent ();
-
-			this.SetProperty (this._content);
+			this._dictionary = content ?? new CQCodeDictionary ();
 		}
 		#endregion
 
@@ -82,7 +78,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 				return false;
 			}
 
-			return this.Function == obj.Function && this.Content == obj.Content;
+			return this.Function == obj.Function && this.Dictionary == obj.Dictionary;
 		}
 		/// <summary>
 		/// 指示当前对象是否等于同一类型的另一个对象
@@ -99,7 +95,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <returns>32 位有符号整数哈希代码</returns>
 		public override int GetHashCode ()
 		{
-			return this.Function.GetHashCode () & this.Content.GetHashCode ();
+			return this.Function.GetHashCode () & this.Dictionary.GetHashCode ();
 		}
 		/// <summary>
 		/// 返回表示当前对象的字符串
@@ -112,10 +108,13 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 				StringBuilder builder = new StringBuilder ();
 				builder.Append ("[CQ:");
 				builder.Append (this.Function.GetDescription ());
-				if (this.Content != null)
+				if (this.Dictionary != null)
 				{
-					builder.Append (",");
-					builder.Append (this.Content);
+					if (this.Dictionary.Count > 0)
+					{
+						builder.Append (",");
+						builder.Append (this.Dictionary);
+					}
 				}
 				builder.Append ("]");
 				this._orginalString = builder.ToString ();
@@ -127,7 +126,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// 获取当前实例的消息字符串
 		/// </summary>
 		/// <returns>当前实例的消息字符串</returns>
-		public override string GetMessage ()
+		public string GetMessage ()
 		{
 			return this.ToString ();
 		}
@@ -135,11 +134,16 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 
 		#region --私有方法--
 		/// <summary>
-		/// 当在派生类中重写时, 设置必要的属性值
+		/// 检查指定的 Key 是否存在, 如果不存在则抛出 <see cref="KeyNotFoundException"/>
 		/// </summary>
-		/// <param name="content">要设置的 <see cref="CQCodeContent"/></param>
-		protected virtual void SetProperty (CQCodeContent content)
-		{ }
+		/// <param name="key">要在 <see cref="CQCode"/> 中检查的 Key</param>
+		protected void ThrowKeyNotFound (CQCodeKeys key)
+		{
+			if (!this.Dictionary.ContainsKey (key))
+			{
+				throw new KeyNotFoundException ($"不存在键: \"{key.GetDescription ()}\"");
+			}
+		}
 		/// <summary>
 		/// 获取字符串中的 CQ码 类型, 设置到当前实例中
 		/// </summary>
@@ -184,16 +188,29 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 					throw new ArgumentException ($"解析到未知的键: {item.Groups[1].Value}", nameof (str));
 				}
 
-				this._content.Add (key, new CQCodeValue (item.Groups[2].Value));
+				this._dictionary.Add (key, new CQCodeValue (item.Groups[2].Value));
 			}
 			#endregion
-
-			// 设置子类属性
-			this.SetProperty (this._content);
 		}
 		#endregion
 
 		#region --运算符--
+		/// <summary>
+		/// 定义将当前实例转化为 <see cref="CQCode"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="string"/> 实例</param>
+		public static implicit operator CQCode (string value)
+		{
+			return new CQCode (value);
+		}
+		/// <summary>
+		/// 定义将当前实例转化为 <see cref="string"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="CQCode"/> 实例</param>
+		public static implicit operator string (CQCode value)
+		{
+			return value.ToString ();
+		}
 		/// <summary>
 		/// 确定两个指定的 <see cref="CQCode"/> 实例是否具有相同的值
 		/// </summary>
@@ -225,24 +242,5 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			return !(a == b);
 		}
 		#endregion
-
-		/*
-		[CQ:image,file=C6C954C53E03ADA35075C7AD929041BC.png]
-		[CQ:record,file=2B89C664E86A4953BA8CFC2A7FCC8088.silk]
-		[CQ:face,id=178]
-		[CQ:emoji,id=128522]
-		[CQ:bface,p=202991,id=2BC726E1D2234FCB7444A34A0EB27CF5]
-		[CQ:shake,id=1]
-		[CQ:at,qq=666]
-		[CQ:rich,title=&#91;QQ小程序&#93;哔哩哔哩,content={"detail_1":{"shareTemplateData":{}&#44;"scene":1036&#44;"appid":"1109937557"&#44;"icon":"http://miniapp.gtimg.cn/public/appicon/432b76be3a548fc128acaa6c1ec90131_200.jpg"&#44;"preview":"external-30160.picsz.qpic.cn/e6d16fd53620d169ae3d436be39f469c/jpg1"&#44;"title":"哔哩哔哩"&#44;"qqdocurl":""&#44;"host":{"nick":"木馨"&#44;"uin":3305409920}&#44;"shareTemplateId":"8C8E89B49BE609866298ADDFF2DBABA4"&#44;"desc":"请病人不要死在走廊上 双点医院#1 &#91;杨远游戏实况&#93;"&#44;"url":"m.q.qq.com/a/s/719c429b939f90b3f6ef7b19beed874a"}}]
-		[CQ:rich,title=全聚德土团通知,content={"mannounce":{"encode":1&#44;"fid":"ebc0b22b00000000dec4df5c105a0100"&#44;"gc":"733135083"&#44;"pic":&#91;{"height":451&#44;"url":"Ov6SVrwsmUQAnsNzd7icph95yuF5ocPZF5tUuoicWBXm8"&#44;"width":380}&#93;&#44;"sign":"5246ad9692927f6ebc142f0d3075da7a"&#44;"text":"5YWo6IGa5b635pys5qyh5Zyf5Zui55uu5qCHQei6uu+8jOmihOmAieS9nOS4muaaguWumuS4ujEwMDBX77yM5aaC5p6c5LiN5aSf6aKE6YCJ57q/5Lya5qC55o2u5a6e6ZmF5oOF5Ya16K+35aSn5a625aSa5omT5]
-		[CQ:rich,text=位置分享      获取经纬度失败]
-		[CQ:rich,url=https://music.apple.com/cn/album/theme/1452524230?i=1452524245,text=https://music.apple.com/cn/album/theme/1452524230?i=1452524245 https://music.apple.com/cn/album/theme/1452524230?i=1452524245]
-		[CQ:rich,url=http://v.gdt.qq.com/gdt_stats.fcg?viewid=cV!X65Zm58loatVltYAuHSUb3mJ1hGpMU7XA_JhLBH8NQ5inJe!X_KlobExzjgScKVMlnscMenkK8g99Rt57OWW0Lh7uSznW2tpmmqFlSoSwCQZYASRdNq0dM4wKZ0yuMqXIlbTYQNB38RmcM!lLcDxkaVooD!JN8Dx4yBUZDUiq87lPch19v2QKBSwaIUpk597jrSSTKqo2Aj9VSJFvoI_jmLiL55iuwaXI1Yu4IoYx4Xl5HICUwrIIimfWXBF_8QxfJaR!QLcfTUIatcR4Ug&i=1&os=2&xp=2,text=在上海，只要你是“1999”年出生的，即可领取1000元写真价值券！ 领取之后，一年有效 阅读全文]
-		[CQ:rich,content={"about":{"DATA7":""&#44;"DATA12":"该群涉嫌违规"&#44;"DATA11":"即将封禁该群"&#44;"DATA9":""&#44;"DATA10":""&#44;"DATA13":""&#44;"time":"1564437550"&#44;"DATA8":""}}]
-		[CQ:contact,id=827572487,type=group]
-		[CQ:contact,id=827572487,type=qq]
-		[CQ:anonymous,ignore=true]
-		*/
 	}
 }

@@ -40,6 +40,22 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		{
 			this.Value = Convert.ToString (value);
 		}
+		/// <summary>
+		/// 初始化 <see cref="CQCodeValue"/> 类的新实例
+		/// </summary>
+		/// <param name="value">一个 <see cref="double"/> 对象</param>
+		public CQCodeValue (double value)
+		{
+			this.Value = Convert.ToString (value);
+		}
+		/// <summary>
+		/// 初始化 <see cref="CQCodeValue"/> 类的新实例
+		/// </summary>
+		/// <param name="value">一个 <see cref="bool"/> 对象</param>
+		public CQCodeValue (bool value)
+		{
+			this.Value = Convert.ToString (value).ToLower ();
+		}
 		#endregion
 
 		#region --公开方法--
@@ -123,7 +139,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
 		public static implicit operator string (CQCodeValue value)
 		{
-			return Encode (value.Value);
+			return Encode (value.Value, true);
 		}
 		/// <summary>
 		/// 定义将 <see cref="string"/> 实例转化为 <see cref="CQCodeValue"/>
@@ -162,6 +178,38 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
 		public static implicit operator CQCodeValue (long value)
+		{
+			return new CQCodeValue (value);
+		}
+		/// <summary>
+		/// 定义将当前实例转化为 <see cref="double"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
+		public static implicit operator double (CQCodeValue value)
+		{
+			return Convert.ToDouble ((string)value);
+		}
+		/// <summary>
+		/// 定义将 <see cref="double"/> 实例转化为 <see cref="CQCodeValue"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
+		public static implicit operator CQCodeValue (double value)
+		{
+			return new CQCodeValue (value);
+		}
+		/// <summary>
+		/// 定义将当前实例转化为 <see cref="bool"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
+		public static implicit operator bool (CQCodeValue value)
+		{
+			return Convert.ToBoolean ((string)value);
+		}
+		/// <summary>
+		/// 定义将 <see cref="bool"/> 实例转化为 <see cref="CQCodeValue"/>
+		/// </summary>
+		/// <param name="value">转换的 <see cref="CQCodeValue"/> 实例</param>
+		public static implicit operator CQCodeValue (bool value)
 		{
 			return new CQCodeValue (value);
 		}

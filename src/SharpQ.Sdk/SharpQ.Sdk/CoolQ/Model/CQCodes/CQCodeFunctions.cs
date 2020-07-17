@@ -48,7 +48,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
         [Description ("record")]
         Record,
         /// <summary>
-        /// At默认
+        /// At某人
         /// </summary>
         [Description ("at")]
         At,

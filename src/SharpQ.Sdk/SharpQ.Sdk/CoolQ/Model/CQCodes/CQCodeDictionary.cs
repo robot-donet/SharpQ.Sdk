@@ -13,7 +13,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 	/// <summary>
 	/// 表示 CoolQ 应用程序的 CQ码内容 的模型类
 	/// </summary>
-	public class CQCodeContent : IGetMessage, IDictionary<CQCodeKeys, CQCodeValue>, IEquatable<CQCodeContent>
+	public class CQCodeDictionary : IGetMessage, IDictionary<CQCodeKeys, CQCodeValue>, IEquatable<CQCodeDictionary>
 	{
 		#region --字段--
 		private readonly Dictionary<CQCodeKeys, CQCodeValue> _dict;
@@ -33,36 +33,36 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			set => this._dict[key] = value;
 		}
 		/// <summary>
-		/// 获得一个包含 <see cref="CQCodeContent"/> 中的键的集合
+		/// 获得一个包含 <see cref="CQCodeDictionary"/> 中的键的集合
 		/// </summary>
 		public ICollection<CQCodeKeys> Keys => this._dict.Keys;
 		/// <summary>
-		/// 获得一个包含 <see cref="CQCodeContent"/> 中的值的集合
+		/// 获得一个包含 <see cref="CQCodeDictionary"/> 中的值的集合
 		/// </summary>
 		public ICollection<CQCodeValue> Values => this._dict.Values;
 		/// <summary>
-		/// 获取包含在 <see cref="CQCodeContent"/> 中的键/值对的数目
+		/// 获取包含在 <see cref="CQCodeDictionary"/> 中的键/值对的数目
 		/// </summary>
 		public int Count => this._dict.Count;
 		/// <summary>
-		/// 获取一个值，该值指示 <see cref="CQCodeContent"/> 是否为只读
+		/// 获取一个值，该值指示 <see cref="CQCodeDictionary"/> 是否为只读
 		/// </summary>
 		bool ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>.IsReadOnly => ((ICollection<KeyValuePair<CQCodeKeys, CQCodeValue>>)this._dict).IsReadOnly;
 		#endregion
 
 		#region --构造函数--
 		/// <summary>
-		/// 初始化 <see cref="CQCodeContent"/> 类的新实例，该实例为空
+		/// 初始化 <see cref="CQCodeDictionary"/> 类的新实例，该实例为空
 		/// </summary>
-		public CQCodeContent ()
+		public CQCodeDictionary ()
 			: this (0)
 		{ }
 		/// <summary>
-		/// 初始化 <see cref="CQCodeContent"/> 类的新实例，该实例为空，具有指定的初始容量
+		/// 初始化 <see cref="CQCodeDictionary"/> 类的新实例，该实例为空，具有指定的初始容量
 		/// </summary>
-		/// <param name="capacity"><see cref="CQCodeContent"/> 可包含的初始元素数</param>
+		/// <param name="capacity"><see cref="CQCodeDictionary"/> 可包含的初始元素数</param>
 		/// <exception cref="ArgumentOutOfRangeException">capacity 小于 0</exception>
-		public CQCodeContent (int capacity)
+		public CQCodeDictionary (int capacity)
 		{
 			this._dict = new Dictionary<CQCodeKeys, CQCodeValue> (capacity);
 		}
@@ -70,7 +70,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 
 		#region --公开方法--
 		/// <summary>
-		/// 将指定的键和值添加到 <see cref="CQCodeContent"/> 中
+		/// 将指定的键和值添加到 <see cref="CQCodeDictionary"/> 中
 		/// </summary>
 		/// <param name="key">要添加的元素的键</param>
 		/// <param name="value">要添加的元素的值</param>
@@ -85,19 +85,19 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			this._dict.Add (key, value);
 		}
 		/// <summary>
-		/// 确定 <see cref="CQCodeContent"/> 是否包含带有指定键的元素
+		/// 确定 <see cref="CQCodeDictionary"/> 是否包含带有指定键的元素
 		/// </summary>
-		/// <param name="key">要在 <see cref="CQCodeContent"/> 中定位的键</param>
-		/// <returns>如果 <see cref="CQCodeContent"/> 包含具有键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+		/// <param name="key">要在 <see cref="CQCodeDictionary"/> 中定位的键</param>
+		/// <returns>如果 <see cref="CQCodeDictionary"/> 包含具有键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
 		public bool ContainsKey (CQCodeKeys key)
 		{
 			return this._dict.ContainsKey (key);
 		}
 		/// <summary>
-		/// 从 <see cref="CQCodeContent"/> 中移除带有指定键的元素
+		/// 从 <see cref="CQCodeDictionary"/> 中移除带有指定键的元素
 		/// </summary>
 		/// <param name="key">要移除的元素的键</param>
-		/// <returns>如果该元素已成功移除，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="CQCodeContent"/> 中没有找到 key，此方法也会返回 <see langword="false"/></returns>
+		/// <returns>如果该元素已成功移除，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="CQCodeDictionary"/> 中没有找到 key，此方法也会返回 <see langword="false"/></returns>
 		public bool Remove (CQCodeKeys key)
 		{
 			return this._dict.Remove (key);
@@ -107,14 +107,14 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		/// <param name="key">要获取其值的键</param>
 		/// <param name="value">当此方法返回时，如果找到指定键，则返回与该键相关联的值；否则，将返回 value 参数的类型的默认值。 此参数未经初始化即被传递</param>
-		/// <returns>如果 <see cref="CQCodeContent"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则，为 <see langword="false"/></returns>
+		/// <returns>如果 <see cref="CQCodeDictionary"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则，为 <see langword="false"/></returns>
 		/// <exception cref="ArgumentNullException">key 为 null</exception>
 		public bool TryGetValue (CQCodeKeys key, out CQCodeValue value)
 		{
 			return this._dict.TryGetValue (key, out value);
 		}
 		/// <summary>
-		/// 从 <see cref="CQCodeContent"/> 中移除所有项
+		/// 从 <see cref="CQCodeDictionary"/> 中移除所有项
 		/// </summary>
 		public void Clear ()
 		{
@@ -133,7 +133,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		/// <param name="obj">一个与此对象进行比较的对象</param>
 		/// <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
-		public bool Equals (CQCodeContent obj)
+		public bool Equals (CQCodeDictionary obj)
 		{
 			if (obj is null)
 			{
@@ -149,7 +149,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
 		public override bool Equals (object obj)
 		{
-			return this.Equals (obj as CQCodeContent);
+			return this.Equals (obj as CQCodeDictionary);
 		}
 		/// <summary>
 		/// 返回此实例的哈希代码
@@ -238,12 +238,12 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 
 		#region --运算符--
 		/// <summary>
-		/// 确定两个指定的 <see cref="CQCodeContent"/> 实例是否具有相同的值
+		/// 确定两个指定的 <see cref="CQCodeDictionary"/> 实例是否具有相同的值
 		/// </summary>
 		/// <param name="a">要比较的第一个对象</param>
 		/// <param name="b">要比较的第二个对象</param>
 		/// <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
-		public static bool operator == (CQCodeContent a, CQCodeContent b)
+		public static bool operator == (CQCodeDictionary a, CQCodeDictionary b)
 		{
 			if (a is null && b is null)
 			{
@@ -258,12 +258,12 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 			return a.Equals (b);
 		}
 		/// <summary>
-		/// 确定两个指定的 <see cref="CQCodeContent"/> 实例是否具有不同的值
+		/// 确定两个指定的 <see cref="CQCodeDictionary"/> 实例是否具有不同的值
 		/// </summary>
 		/// <param name="a">要比较的第一个对象</param>
 		/// <param name="b">要比较的第二个对象</param>
 		/// <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
-		public static bool operator != (CQCodeContent a, CQCodeContent b)
+		public static bool operator != (CQCodeDictionary a, CQCodeDictionary b)
 		{
 			return !(a == b);
 		}

@@ -1,0 +1,2873 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpQ.Sdk</name>
+    </assembly>
+    <members>
+        <member name="T:SharpQ.Sdk.CoolQ.CQApi">
+            <summary>
+            表示 CoolQ 应用程序的接口封装类, 该类不允许继承
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.CQApi.#ctor(System.Int32)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 类的新实例, 该实例持有指定的唯一授权码
+            </summary>
+            <param name="authCode">授权码, 此码由 CoolQ 应用程序向应用的 Initialize 函数派发</param>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Global.DefaultEncoding">
+            <summary>
+            获取默认编码
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Interface.IGetMessage">
+            <summary>
+            表示 CoolQ 应用程序获取消息字符串的接口
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Interface.IGetMessage.GetMessage">
+            <summary>
+            在派生类中重写时, 获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1">
+            <summary>
+            表示 CoolQ 应用程序的 列表数据 模型基类, 该类是抽象的
+            </summary>
+            <typeparam name="T">列表中元素的类型</typeparam>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1._list">
+            <summary>
+            获取当前实例保护的列表数据
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.Count">
+            <summary>
+            获取集合中的元素数
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.#ctor(SharpQ.Sdk.CoolQ.CQApi)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.Equals(SharpQ.Sdk.CoolQ.Model.BasisCollectionModel{`0})">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器
+            </summary>
+            <returns>用于循环访问集合的枚举数</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器
+            </summary>
+            <returns>用于循环访问集合的枚举数</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.op_Equality(SharpQ.Sdk.CoolQ.Model.BasisCollectionModel{`0},SharpQ.Sdk.CoolQ.Model.BasisCollectionModel{`0})">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1.op_Inequality(SharpQ.Sdk.CoolQ.Model.BasisCollectionModel{`0},SharpQ.Sdk.CoolQ.Model.BasisCollectionModel{`0})">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisCollectionModel`1"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.BasisModel">
+            <summary>
+            表示 CoolQ 应用程序的 数据 模型基类, 该类是抽象的
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.BasisModel.Api">
+            <summary>
+            获取当前用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisModel.#ctor(SharpQ.Sdk.CoolQ.CQApi)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisModel"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisModel.GetMessage">
+            <summary>
+            在派生类中重写时, 获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.BasisStreamModel">
+            <summary>
+            表示 CoolQ 应用程序的 流式数据 模型基类, 该类是抽象的
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisStreamModel.#ctor(SharpQ.Sdk.CoolQ.CQApi)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisStreamModel"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisStreamModel.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisStreamModel"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.BasisStreamModel.Initialize(System.IO.BinaryReader)">
+            <summary>
+            当在派生类中重写时, 对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 的模型类
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.Function">
+            <summary>
+            获取当前实例的功能
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.Dictionary">
+            <summary>
+            获取当前实例的键值对
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.#ctor(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary)">
+            <summary>
+            使用指定CQ码功能和对应的键值对初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/>  类的新实例
+            </summary>
+            <param name="function">指定当前实例功能的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions"/></param>
+            <param name="content">指定当前实例的内容键值对</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.Equals(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.ThrowKeyNotFound(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys)">
+            <summary>
+            检查指定的 Key 是否存在, 如果不存在则抛出 <see cref="T:System.Collections.Generic.KeyNotFoundException"/>
+            </summary>
+            <param name="key">要在 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/> 中检查的 Key</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.GetFunction(System.String)">
+            <summary>
+            获取字符串中的 CQ码 类型, 设置到当前实例中
+            </summary>
+            <param name="str">要解析的字符串</param>
+            <exception cref="T:System.FormatException">str 不符合 CQ码 格式</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.GetContent(System.String)">
+            <summary>
+            获取字符串中的 CQ码 内容, 设置到当前实例中
+            </summary>
+            <param name="str">要解析的字符串</param>
+            <exception cref="T:System.FormatException">str 不符合 CQ码 格式</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.op_Equality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode.op_Inequality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCode"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "匿名" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous.Ignore">
+            <summary>
+            获取一个值, 指示当前实例描述匿名信息时是否在发送失败时转换为正常消息发送
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous.#ctor(System.Boolean)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous"/> 类的新实例, 并指定是否在发送失败时转换为正常消息
+            </summary>
+            <param name="ignore">指定是否在发送失败时转换为正常消息</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAnonymous"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "At" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt.QQ">
+            <summary>
+            获取当前实例的 QQ 属性
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt.#ctor(System.Int64)">
+            <summary>
+            使用指定的值来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt"/> 类的新实例
+            </summary>
+            <param name="qq">绑定于当前实例的值</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAt"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "At全体" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll.#ctor">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll"/> 类的新实例
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeAtAll"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "名片分享" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact.Type">
+            <summary>
+            获取当前实例的分享名片类型
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact.Id">
+            <summary>
+            获取当前实例的好友Id (QQ号)
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact.#ctor(SharpQ.Sdk.CoolQ.Model.CQCodes.CQShareCardTypes,System.Int64)">
+            <summary>
+            使用群号或QQ号来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact"/> 类的新实例
+            </summary>
+            <param name="type">创建新实例指定的分享名片类型</param>
+            <param name="id">绑定于当前实例的 Id</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeContact"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码内容 的模型类
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Item(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys)">
+            <summary>
+            获取或设置与指定的键关联的值
+            </summary>
+            <param name="key">要获取或设置的值的键</param>
+            <returns>与指定的键相关联的值。 如果指定键未找到，则 Get 操作引发 <see cref="T:System.Collections.Generic.KeyNotFoundException"/>，而 Set 操作创建一个带指定键的新元素</returns>
+            <exception cref="T:System.ArgumentNullException">key 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">已检索该属性且集合中不存在 key</exception>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Keys">
+            <summary>
+            获得一个包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中的键的集合
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Values">
+            <summary>
+            获得一个包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中的值的集合
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Count">
+            <summary>
+            获取包含在 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中的键/值对的数目
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeKeys,SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeValue}}#IsReadOnly">
+            <summary>
+            获取一个值，该值指示 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 是否为只读
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.#ctor">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 类的新实例，该实例为空
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.#ctor(System.Int32)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 类的新实例，该实例为空，具有指定的初始容量
+            </summary>
+            <param name="capacity"><see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 可包含的初始元素数</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">capacity 小于 0</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Add(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)">
+            <summary>
+            将指定的键和值添加到 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中
+            </summary>
+            <param name="key">要添加的元素的键</param>
+            <param name="value">要添加的元素的值</param>
+            <exception cref="T:System.ArgumentNullException">value 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.ContainsKey(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys)">
+            <summary>
+            确定 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 是否包含带有指定键的元素
+            </summary>
+            <param name="key">要在 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中定位的键</param>
+            <returns>如果 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 包含具有键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Remove(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys)">
+            <summary>
+            从 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中移除带有指定键的元素
+            </summary>
+            <param name="key">要移除的元素的键</param>
+            <returns>如果该元素已成功移除，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中没有找到 key，此方法也会返回 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.TryGetValue(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue@)">
+            <summary>
+            获取与指定键关联的值
+            </summary>
+            <param name="key">要获取其值的键</param>
+            <param name="value">当此方法返回时，如果找到指定键，则返回与该键相关联的值；否则，将返回 value 参数的类型的默认值。 此参数未经初始化即被传递</param>
+            <returns>如果 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则，为 <see langword="false"/></returns>
+            <exception cref="T:System.ArgumentNullException">key 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Clear">
+            <summary>
+            从 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 中移除所有项
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器
+            </summary>
+            <returns>用于循环访问集合的枚举数</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Equals(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeKeys,SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeValue}}#Add(System.Collections.Generic.KeyValuePair{SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue})">
+            <summary>
+            将某项添加到 <see cref="T:System.Collections.Generic.ICollection`1"/> 中
+            </summary>
+            <param name="item">要添加到 <see cref="T:System.Collections.Generic.ICollection`1"/> 的对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeKeys,SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeValue}}#CopyTo(System.Collections.Generic.KeyValuePair{SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue}[],System.Int32)">
+            <summary>
+            从特定的 <see cref="T:System.Collections.Generic.ICollection`1"/> 索引处开始，将 System.Array 的元素复制到一个 <see cref="T:System.Array"/> 中
+            </summary>
+            <param name="array">一维 <see cref="T:System.Array"/>，它是从 <see cref="T:System.Collections.Generic.ICollection`1"/> 复制的元素的目标。 <see cref="T:System.Array"/> 必须具有从零开始的索引</param>
+            <param name="arrayIndex">array 中从零开始的索引，从此处开始复制</param>
+            <exception cref="T:System.ArgumentNullException">array 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex 小于 0</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeKeys,SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeValue}}#Remove(System.Collections.Generic.KeyValuePair{SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue})">
+            <summary>
+            从 <see cref="T:System.Collections.Generic.ICollection`1"/> 中移除特定对象的第一个匹配项
+            </summary>
+            <param name="item">要从 <see cref="T:System.Collections.Generic.ICollection`1"/> 中删除的对象</param>
+            <returns>如果从 <see cref="T:System.Collections.Generic.ICollection`1"/> 中成功移除 item，则为 <see langword="true"/>；否则为 <see langword="false"/>。 如果在原始 <see cref="T:System.Collections.Generic.ICollection`1"/> 中没有找到 item，该方法也会返回 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#Generic#ICollection{System#Collections#Generic#KeyValuePair{SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeKeys,SharpQ#Sdk#CoolQ#Model#CQCodes#CQCodeValue}}#Contains(System.Collections.Generic.KeyValuePair{SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue})">
+            <summary>
+            确定 <see cref="T:System.Collections.Generic.ICollection`1"/> 是否包含特定值
+            </summary>
+            <param name="item">要在 <see cref="T:System.Collections.Generic.ICollection`1"/> 中定位的对象</param>
+            <returns>如果在 <see cref="T:System.Collections.Generic.ICollection`1"/> 中找到 item，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器
+            </summary>
+            <returns>用于循环访问集合的枚举数</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.op_Equality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary.op_Inequality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeDictionary"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "Emoji" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji.Id">
+            <summary>
+            获取当前实例的 Emoji 表情编号
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji.#ctor(System.Int32)">
+            <summary>
+            使用指定的 Emoji 表情编号来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji"/> 类的新实例
+            </summary>
+            <param name="id">绑定于当前实例的 Emoji 表情编码</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeEmoji"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "表情" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace.Face">
+            <summary>
+            获取当前实例的 Face 表情编号
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace.#ctor(SharpQ.Sdk.CoolQ.Model.CQCodes.CQFaces)">
+            <summary>
+            使用指定的表情枚举来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace"/> 类的新实例
+            </summary>
+            <param name="face">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQFaces"/> 表情枚举</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFace"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码功能 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Unknown">
+            <summary>
+            未知类型, 同时也是默认值
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Face">
+            <summary>
+            QQ表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Emoji">
+            <summary>
+            Emoji表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Bface">
+            <summary>
+            原创表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Sface">
+            <summary>
+            小表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Record">
+            <summary>
+            语音
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.At">
+            <summary>
+            At默认
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Rps">
+            <summary>
+            猜拳魔法表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Dice">
+            <summary>
+            掷骰子魔法表情
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Shake">
+            <summary>
+            戳一戳
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Music">
+            <summary>
+            音乐
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Share">
+            <summary>
+            链接分享
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Rich">
+            <summary>
+            卡片消息
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Sign">
+            <summary>
+            签到
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Hb">
+            <summary>
+            红包
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Contact">
+            <summary>
+            推荐
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Show">
+            <summary>
+            厘米秀
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Location">
+            <summary>
+            位置分享
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeFunctions.Anonymous">
+            <summary>
+            匿名消息
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码键 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Id">
+            <summary>
+            表示 "id" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Qq">
+            <summary>
+            表示 "qq" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.File">
+            <summary>
+            表示 "file" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.P">
+            <summary>
+            表示 "p" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Ignore">
+            <summary>
+            表示 "ignore" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Title">
+            <summary>
+            表示 "title" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Content">
+            <summary>
+            表示 "content" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Text">
+            <summary>
+            表示 "text" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Url">
+            <summary>
+            表示 "url" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Type">
+            <summary>
+            表示 "type" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Style">
+            <summary>
+            表示 "Style" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Image">
+            <summary>
+            表示 "image" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Lat">
+            <summary>
+            表示 "lat" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Lon">
+            <summary>
+            表示 "lon" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Zoom">
+            <summary>
+            表示 "zoom" 键
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeKeys.Audio">
+            <summary>
+            表示 "audio" 键
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "位置" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.Lat">
+            <summary>
+            获取当前实例的纬度
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.Lon">
+            <summary>
+            获取当前实例的经度
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.Zoom">
+            <summary>
+            获取当前实例的放大倍数
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.Site">
+            <summary>
+            获取当前实例的地点
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.Location">
+            <summary>
+            获取当前实例的位置
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.#ctor(System.Double,System.Double,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            使用指定的经纬度和位置信息来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation"/> 类的新实例
+            </summary>
+            <param name="lat">经纬度中的纬度值</param>
+            <param name="lon">经纬度中的经度值</param>
+            <param name="site">描述指定位置的地点名称</param>
+            <param name="location">描述指定位置的详细地址. (建议20个字以内)</param>
+            <param name="zoom">指示分享后呈现地图的放大倍数. 默认: 15倍</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeLocation"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "音乐 " 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.Id">
+            <summary>
+            获取当前实例的歌曲ID
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.Source">
+            <summary>
+            获取当前实例的歌曲来源
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.Style">
+            <summary>
+            获取当前实例的歌曲样式
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.#ctor(System.Int64,SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources,System.Nullable{SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicStyles})">
+            <summary>
+            使用指定的歌曲ID来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic"/> 类的新实例
+            </summary>
+            <param name="id">绑定于当前实例的歌曲ID</param>
+            <param name="source">指定检索歌曲ID的源</param>
+            <param name="style">指定歌曲分享的样式</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeMusic"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "戳一戳" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake.Id">
+            <summary>
+            获取当前实例的戳一戳 "id"
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake.#ctor">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake"/> 类的新实例
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShake"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码 "分享链接" 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.Url">
+            <summary>
+            获取当前实例的分享链接
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.Title">
+            <summary>
+            获取当前实例的分享标题
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.Content">
+            <summary>
+            获取当前实例的详细内容
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.Image">
+            <summary>
+            获取当前实例的图片链接
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.#ctor(System.String)">
+            <summary>
+            使用指定格式的字符串来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare"/> 类的新实例
+            </summary>
+            <param name="text">绑定于当前实例的字符串</param>
+            <exception cref="T:System.ArgumentNullException">text 为 null</exception>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">text 不包含指定的键</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            使用指定的链接来初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare"/> 类的新实例
+            </summary>
+            <param name="url">绑定于当前实例的分享 URL 字符串</param>
+            <param name="title">绑定于当前实例的标题字符串 或 null</param>
+            <param name="content">绑定于当前实例的内容字符串 或 null</param>
+            <param name="imageUrl">绑定于当前实例的图片 URL 或 null</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare">
+            <summary>
+            定义将当前实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeShare"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:System.String"/> 实例</param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            表示 CoolQ 应用程序的 CQ码值 的模型类
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.Value">
+            <summary>
+            获取当前实例的原始值
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 类的新实例
+            </summary>
+            <param name="value">一个 <see cref="T:System.String"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.#ctor(System.Int32)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 类的新实例
+            </summary>
+            <param name="value">一个 <see cref="T:System.Int32"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.#ctor(System.Int64)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 类的新实例
+            </summary>
+            <param name="value">一个 <see cref="T:System.Int64"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.#ctor(System.Double)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 类的新实例
+            </summary>
+            <param name="value">一个 <see cref="T:System.Double"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.#ctor(System.Boolean)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 类的新实例
+            </summary>
+            <param name="value">一个 <see cref="T:System.Boolean"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.Equals(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.Encode(System.String,System.Boolean)">
+            <summary>
+            将指定的字符串根据 CQ码 的编码规则进行转义
+            </summary>
+            <param name="str">要编码的原始字符串</param>
+            <param name="escapeComma">是否转义逗号, 默认: False</param>
+            <returns>转义后的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.Decode(System.String)">
+            <summary>
+            将指定的字符串根据 CQ码 的解码规则进行反转义
+            </summary>
+            <param name="str">要编码的原始字符串</param>
+            <returns>反转义后的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(System.String)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            定义将 <see cref="T:System.String"/> 实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)~System.Int32">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Int32"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(System.Int32)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            定义将 <see cref="T:System.Int32"/> 实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)~System.Int64">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Int64"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(System.Int64)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            定义将 <see cref="T:System.Int64"/> 实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)~System.Double">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Double"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(System.Double)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            定义将 <see cref="T:System.Double"/> 实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)~System.Boolean">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Boolean"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Implicit(System.Boolean)~SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue">
+            <summary>
+            定义将 <see cref="T:System.Boolean"/> 实例转化为 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Equality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue.op_Inequality(SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue,SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQCodeValue"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQFaces">
+            <summary>
+            表示 CoolQ 应用程序的 Face表情编码 的枚举
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources">
+            <summary>
+            表示 CoolQ 应用程序的 音乐来源 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources.Unknown">
+            <summary>
+            未知来源
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources.Tencent">
+            <summary>
+            QQ 音乐
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources.Netease">
+            <summary>
+            网易云音乐
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicSources.XiaMi">
+            <summary>
+            虾米音乐
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicStyles">
+            <summary>
+            表示 CoolQ 应用程序的 音乐样式 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicStyles.Old">
+            <summary>
+            旧版
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicStyles.BigCard">
+            <summary>
+            大卡片
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQMusicStyles.New">
+            <summary>
+            新版
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQCodes.CQShareCardTypes">
+            <summary>
+            表示 CoolQ 应用程序的 分享名片类型 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQShareCardTypes.Unknown">
+            <summary>
+            表示分享类型未知
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQShareCardTypes.Qq">
+            <summary>
+            表示分享类型为 QQ
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQCodes.CQShareCardTypes.Group">
+            <summary>
+            表示分享类型为 Group
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow">
+            <summary>
+            表示 CoolQ 应用程序的 悬浮窗 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.Value">
+            <summary>
+            获取或设置当前悬浮窗的值
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.Unit">
+            <summary>
+            获取或设置当前悬浮窗使用的单位
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.TextColor">
+            <summary>
+            获取或设置当前悬浮窗的文本颜色
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.#ctor">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 类的新实例
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.#ctor(System.Object)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 类的新实例
+            </summary>
+            <param name="value">用于展示的数据值</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.#ctor(System.Object,System.String)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 类的新实例
+            </summary>
+            <param name="value">用于展示的数据值</param>
+            <param name="unit">数据值的单位</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.#ctor(System.Object,System.String,SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 类的新实例
+            </summary>
+            <param name="value">用于展示的数据值</param>
+            <param name="unit">数据值的单位</param>
+            <param name="textColor">文本颜色</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.Equals(SharpQ.Sdk.CoolQ.Model.CQFloatWindow)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 other 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 other 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.op_Equality(SharpQ.Sdk.CoolQ.Model.CQFloatWindow,SharpQ.Sdk.CoolQ.Model.CQFloatWindow)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.CQFloatWindow.op_Inequality(SharpQ.Sdk.CoolQ.Model.CQFloatWindow,SharpQ.Sdk.CoolQ.Model.CQFloatWindow)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindow"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors">
+            <summary>
+            表示 CoolQ 应用程序的 悬浮窗颜色 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Green">
+            <summary>
+            绿色
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Orange">
+            <summary>
+            橙色
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Red">
+            <summary>
+            红色
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Crimson">
+            <summary>
+            深红
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Black">
+            <summary>
+            黑色
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.CQFloatWindowColors.Gray">
+            <summary>
+            灰色
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.Discuss">
+            <summary>
+            表示 CoolQ 应用程序的 讨论组 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.Discuss.MinValue">
+            <summary>
+            表示 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例的最小唯一标识, 此字段为常数.
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.Discuss.Id">
+            <summary>
+            获取当前实例的唯一标识 (讨论组号)
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Int64)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="id">绑定于当前实例的唯一标识</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">id 小于 <see cref="F:SharpQ.Sdk.CoolQ.Model.Discuss.MinValue"/></exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.Equals(SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Implicit(SharpQ.Sdk.CoolQ.Model.Discuss)~System.Int64">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Int64"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Implicit(SharpQ.Sdk.CoolQ.Model.Discuss)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Equality(SharpQ.Sdk.CoolQ.Model.Discuss,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Inequality(SharpQ.Sdk.CoolQ.Model.Discuss,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Equality(SharpQ.Sdk.CoolQ.Model.Discuss,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例和 <see cref="T:System.Int64"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Inequality(SharpQ.Sdk.CoolQ.Model.Discuss,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例和 <see cref="T:System.Int64"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Equality(System.Int64,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Inequality(System.Int64,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Equality(SharpQ.Sdk.CoolQ.Model.Discuss,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例和 <see cref="T:System.String"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Inequality(SharpQ.Sdk.CoolQ.Model.Discuss,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例和 <see cref="T:System.String"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Equality(System.String,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Discuss.op_Inequality(System.String,SharpQ.Sdk.CoolQ.Model.Discuss)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Discuss"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.FriendInfo">
+            <summary>
+            表示 CoolQ 应用程序的 好友信息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.FriendInfo.Nick">
+            <summary>
+            获取当前实例的昵称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.FriendInfo.Notes">
+            <summary>
+            获取当前实例的备注
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.FriendInfo"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.Equals(SharpQ.Sdk.CoolQ.Model.FriendInfo)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.op_Equality(SharpQ.Sdk.CoolQ.Model.FriendInfo,SharpQ.Sdk.CoolQ.Model.FriendInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.FriendInfo"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfo.op_Inequality(SharpQ.Sdk.CoolQ.Model.FriendInfo,SharpQ.Sdk.CoolQ.Model.FriendInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.FriendInfo"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection">
+            <summary>
+            表示 CoolQ 应用程序的 好友信息列表 模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.FriendInfoCollection.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.Gender">
+            <summary>
+            表示 CoolQ 应用程序的 性别 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.Gender.Male">
+            <summary>
+            男性
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.Gender.Female">
+            <summary>
+            女性
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.Gender.Unknown">
+            <summary>
+            未知性别
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.Group">
+            <summary>
+            表示 CoolQ 应用程序的 群组 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.Group.MinValue">
+            <summary>
+            表示 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例的最小唯一标识, 此字段为常数.
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.Group.Id">
+            <summary>
+            获取当前实例的唯一标识 (群号)
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Int64)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="id">绑定于当前实例的唯一标识</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">id 小于 <see cref="F:SharpQ.Sdk.CoolQ.Model.Group.MinValue"/></exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.#ctor(SharpQ.Sdk.CoolQ.CQApi)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.Equals(SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Implicit(SharpQ.Sdk.CoolQ.Model.Group)~System.Int64">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Int64"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Implicit(SharpQ.Sdk.CoolQ.Model.Group)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Equality(SharpQ.Sdk.CoolQ.Model.Group,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Inequality(SharpQ.Sdk.CoolQ.Model.Group,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Equality(SharpQ.Sdk.CoolQ.Model.Group,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例和 <see cref="T:System.Int64"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Inequality(SharpQ.Sdk.CoolQ.Model.Group,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例和 <see cref="T:System.Int64"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Equality(System.Int64,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Inequality(System.Int64,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Equality(SharpQ.Sdk.CoolQ.Model.Group,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例和 <see cref="T:System.String"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Inequality(SharpQ.Sdk.CoolQ.Model.Group,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例和 <see cref="T:System.String"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Equality(System.String,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Group.op_Inequality(System.String,SharpQ.Sdk.CoolQ.Model.Group)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupFileInfo">
+            <summary>
+            表示 CoolQ 应用程序的 群文件信息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.FileId">
+            <summary>
+            获取当前实例的文件ID
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.FileName">
+            <summary>
+            获取当前实例的文件名
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.FileSize">
+            <summary>
+            获取当前实例的文件大小
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.BusId">
+            <summary>
+            获取当实例的 BusID
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.Equals(SharpQ.Sdk.CoolQ.Model.GroupFileInfo)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupFileInfo.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupInfo">
+            <summary>
+            表示 CoolQ 应用程序的 群组信息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupInfo.Name">
+            <summary>
+            获取当前实例的名称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupInfo.CurrentMemberCount">
+            <summary>
+            获取当前实例的当前成员数量
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupInfo.MaxMemberCount">
+            <summary>
+            获取当前实例的最大成员数量
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[],System.Boolean)">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <param name="isGroupList">指示是否以解析的工作方式是否以 "群列表" 的方式进行</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.Equals(SharpQ.Sdk.CoolQ.Model.GroupInfo)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.op_Equality(SharpQ.Sdk.CoolQ.Model.GroupInfo,SharpQ.Sdk.CoolQ.Model.GroupInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupInfo"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfo.op_Inequality(SharpQ.Sdk.CoolQ.Model.GroupInfo,SharpQ.Sdk.CoolQ.Model.GroupInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupInfo"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection">
+            <summary>
+            表示 CoolQ 应用程序的 群组信息列表 模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous">
+            <summary>
+            表示 CoolQ 应用程序的 群成员匿名 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.OrginalString">
+            <summary>
+            获取当前实例的原始字符串
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.Id">
+            <summary>
+            获取当前实例的唯一标识 (匿名群员标识)
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.AnonymousName">
+            <summary>
+            获取当前实例的匿名名称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.Token">
+            <summary>
+            获取当前实例的执行令牌
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.String)">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.FriendInfo"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+            <exception cref="T:System.FormatException">ciphertext 不是 Base64 字符串</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.Equals(SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.op_Equality(SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous,SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous.op_Inequality(SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous,SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupMemberAnonymous"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo">
+            <summary>
+            表示 CoolQ 应用程序的 群成员信息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Group">
+            <summary>
+            获取一个与当前实例关联的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Group"/> 实例
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Nick">
+            <summary>
+            获取当前实例成员的 QQ 昵称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Card">
+            <summary>
+            获取当前实例成员的名片
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Gender">
+            <summary>
+            获取当前实例成员的性别
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Age">
+            <summary>
+            获取当前实例成员的年龄
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Location">
+            <summary>
+            获取当前实例成员的归属地区
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.JoinTime">
+            <summary>
+            获取当前实例成员的入群时间
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.LastSpeakTime">
+            <summary>
+            获取当前实例成员的最后发言时间
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Level">
+            <summary>
+            获取当前实例成员的等级名称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.MemberType">
+            <summary>
+            获取当前实例成员的类型
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.IsBanRecordMember">
+            <summary>
+            获取当前实例成员是否为不良记录成员
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.SpecialTitle">
+            <summary>
+            获取当前实例成员的专属头衔
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.SpecialTitleExpirationTime">
+            <summary>
+            获取当前实例成员的专属头衔过期时间
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.IsAllowEditorCard">
+            <summary>
+            获取当前实例成员是否允许修改名片
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Equals(SharpQ.Sdk.CoolQ.Model.GroupMemberInfo)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.op_Equality(SharpQ.Sdk.CoolQ.Model.GroupMemberInfo,SharpQ.Sdk.CoolQ.Model.GroupMemberInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo.op_Inequality(SharpQ.Sdk.CoolQ.Model.GroupMemberInfo,SharpQ.Sdk.CoolQ.Model.GroupMemberInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupMemberInfo"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupMemberInfoCollection">
+            <summary>
+            表示 CoolQ 应用程序的 群成员信息列表 模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfoCollection.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.GroupInfoCollection"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfoCollection.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfoCollection.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.GroupMemberInfoCollection.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.GroupMemberType">
+            <summary>
+            表示 CoolQ 应用程序的 群成员类型 的枚举
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.GroupMemberType.Member">
+            <summary>
+            成员
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.GroupMemberType.Manager">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.GroupMemberType.Creator">
+            <summary>
+            群主
+            </summary>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.Message">
+            <summary>
+            表示 CoolQ 应用程序的 消息 的模型类
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.Message.Id">
+            <summary>
+            获取当前实例的唯一标识 (消息ID)
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.Message.Text">
+            <summary>
+            获取当前实例的文本形式
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Int32,System.String)">
+            <summary>
+            使用指定的消息内容和消息标识初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="msgId">绑定于当前实例的消息标识</param>
+            <param name="msg">绑定于当前实例的消息内容字符串</param>
+            <exception cref="T:System.ArgumentNullException">api 或 msg 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">msgId 的值小于 0</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.Equals(SharpQ.Sdk.CoolQ.Model.Message)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Implicit(SharpQ.Sdk.CoolQ.Model.Message)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Equality(SharpQ.Sdk.CoolQ.Model.Message,SharpQ.Sdk.CoolQ.Model.Message)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Inequality(SharpQ.Sdk.CoolQ.Model.Message,SharpQ.Sdk.CoolQ.Model.Message)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Equality(SharpQ.Sdk.CoolQ.Model.Message,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例和 <see cref="T:System.String"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Inequality(SharpQ.Sdk.CoolQ.Model.Message,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例和 <see cref="T:System.String"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Equality(System.String,SharpQ.Sdk.CoolQ.Model.Message)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Message.op_Inequality(System.String,SharpQ.Sdk.CoolQ.Model.Message)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.QQ">
+            <summary>
+            表示 CoolQ 应用程序的 QQ 的模型类
+            </summary>
+        </member>
+        <member name="F:SharpQ.Sdk.CoolQ.Model.QQ.MinValue">
+            <summary>
+            获取 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例的最小唯一标识, 多用于表示 (系统消息). 此字段为常数
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.QQ.Id">
+            <summary>
+            获取当前实例的唯一标识 (QQ号码)
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Int64)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="id">绑定于当前实例的唯一标识</param>
+            <exception cref="T:System.ArgumentNullException">api 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">id 小于 <see cref="F:SharpQ.Sdk.CoolQ.Model.QQ.MinValue"/></exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.Equals(SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Implicit(SharpQ.Sdk.CoolQ.Model.QQ)~System.Int64">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.Int64"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Implicit(SharpQ.Sdk.CoolQ.Model.QQ)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Equality(SharpQ.Sdk.CoolQ.Model.QQ,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Inequality(SharpQ.Sdk.CoolQ.Model.QQ,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Equality(SharpQ.Sdk.CoolQ.Model.QQ,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例和 <see cref="T:System.Int64"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Inequality(SharpQ.Sdk.CoolQ.Model.QQ,System.Int64)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例和 <see cref="T:System.Int64"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Equality(System.Int64,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Inequality(System.Int64,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定指定的 <see cref="T:System.Int64"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.Int64"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Equality(SharpQ.Sdk.CoolQ.Model.QQ,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例和 <see cref="T:System.String"/> 是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Inequality(SharpQ.Sdk.CoolQ.Model.QQ,System.String)">
+            <summary>
+            确定指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例和 <see cref="T:System.String"/> 是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:System.String"/> 对象</param>
+            <returns>如果是 a 的值与 b 不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Equality(System.String,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <returns>如果是 a 与 b 的值相同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.QQ.op_Inequality(System.String,SharpQ.Sdk.CoolQ.Model.QQ)">
+            <summary>
+            确定指定的 <see cref="T:System.String"/> 和 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的 <see cref="T:System.String"/> 对象</param>
+            <param name="b">要比较的 <see cref="T:SharpQ.Sdk.CoolQ.Model.QQ"/> 对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.RegexMessage">
+            <summary>
+            表示 CoolQ 应用程序的 正则消息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.RegexMessage.Item(System.String)">
+            <summary>
+            获取与指定的键关联的值
+            </summary>
+            <param name="key">要获取或设置的值的键</param>
+            <returns>与指定的键相关联的值。 如果指定键未找到，则 Get 操作引发 <see cref="T:System.Collections.Generic.KeyNotFoundException"/></returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">已检索该属性且集合中不存在 key</exception>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.RegexMessage.Keys">
+            <summary>
+            获得一个包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的键的集合
+            </summary>
+            <returns>一个 <see cref="T:System.Collections.Generic.IEnumerable`1"/>，包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的键</returns>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.RegexMessage.Values">
+            <summary>
+            获得一个包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的值的集合
+            </summary>
+            <returns>一个 <see cref="T:System.Collections.Generic.IEnumerable`1"/>，包含 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的值</returns>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.RegexMessage.Count">
+            <summary>
+            获取包含在 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的键/值对的数目
+            </summary>
+            <returns>包含在 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中的键/值对的数目</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Int32,System.String)">
+            <summary>
+            使用指定的消息内容和消息标识初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.Message"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="msgId">绑定于当前实例的消息标识</param>
+            <param name="msg">绑定于当前实例的消息内容字符串</param>
+            <exception cref="T:System.ArgumentNullException">api 或 msg 为 null</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">msgId 的值小于 0</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.ContainsKey(System.String)">
+            <summary>
+            确定是否 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 包含指定键
+            </summary>
+            <param name="key">要在 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 中定位的键</param>
+            <returns>如果 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.TryGetValue(System.String,System.String@)">
+            <summary>
+            获取与指定键关联的值
+            </summary>
+            <param name="key">要获取的值的键</param>
+            <param name="value">当此方法返回时，如果找到指定键，则包含与该键相关的值；否则包含 value 参数类型的默认值。 此参数未经初始化即被传递</param>
+            <returns>如果 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 包含具有指定键的元素，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.GetEnumerator">
+            <summary>
+            返回循环访问 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 的枚举数
+            </summary>
+            <returns>用于 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 的 <see cref="T:System.Collections.Generic.IEnumerator`1"/> 结构。</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回循环访问 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 的枚举数
+            </summary>
+            <returns>用于 <see cref="T:SharpQ.Sdk.CoolQ.Model.RegexMessage"/> 的 <see cref="T:System.Collections.IEnumerator"/> 结构。</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.RegexMessage.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.Request">
+            <summary>
+            表示 CoolQ 应用程序的 操作请求 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.Request.ResponseFlag">
+            <summary>
+            获取当前实例的请求反馈标识
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.String)">
+            <summary>
+            初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.BasisStreamModel"/> 类的新实例, 并且持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="responseFlag">绑定于当前实例用于后续操作的请求反馈标识</param>
+            <exception cref="T:System.ArgumentNullException">api 或 responseFlag 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.Equals(SharpQ.Sdk.CoolQ.Model.Request)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.GetMessage">
+            <summary>
+            获取当前实例的消息字符串
+            </summary>
+            <returns>当前实例的消息字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.op_Implicit(SharpQ.Sdk.CoolQ.Model.Request)~System.String">
+            <summary>
+            定义将当前实例转化为 <see cref="T:System.String"/>
+            </summary>
+            <param name="value">转换的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Request"/> 实例</param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.op_Equality(SharpQ.Sdk.CoolQ.Model.Request,SharpQ.Sdk.CoolQ.Model.Request)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Request"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.Request.op_Inequality(SharpQ.Sdk.CoolQ.Model.Request,SharpQ.Sdk.CoolQ.Model.Request)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.Request"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="T:SharpQ.Sdk.CoolQ.Model.StrangerInfo">
+            <summary>
+            表示 CoolQ 应用程序的 陌生人信息 的模型类, 该类不能被继承
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Nick">
+            <summary>
+            获取当前实例的昵称
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Gender">
+            <summary>
+            获取当前实例的性别
+            </summary>
+        </member>
+        <member name="P:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Age">
+            <summary>
+            获取当前实例的年龄
+            </summary>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.#ctor(SharpQ.Sdk.CoolQ.CQApi,System.Byte[])">
+            <summary>
+             使用指定的密文初始化 <see cref="T:SharpQ.Sdk.CoolQ.Model.StrangerInfo"/> 类的新实例, 并持有用于扩展方法的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 实例
+            </summary>
+            <param name="api">绑定于当前实例的 <see cref="T:SharpQ.Sdk.CoolQ.CQApi"/> 对象</param>
+            <param name="ciphertext">预解密的密文</param>
+            <exception cref="T:System.ArgumentNullException">api 或 ciphertext 为 null</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Equals(SharpQ.Sdk.CoolQ.Model.StrangerInfo)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Equals(System.Object)">
+            <summary>
+            指示当前对象是否等于同一类型的另一个对象
+            </summary>
+            <param name="obj">一个与此对象进行比较的对象</param>
+            <returns>如果当前对象等于 obj 参数，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码
+            </summary>
+            <returns>32 位有符号整数哈希代码</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns>表示当前对象的字符串</returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.Initialize(System.IO.BinaryReader)">
+            <summary>
+            对当前实例的密文进行初始化
+            </summary>
+            <param name="reader">用于解析模型数据的 <see cref="T:System.IO.BinaryReader"/></param>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.op_Equality(SharpQ.Sdk.CoolQ.Model.StrangerInfo,SharpQ.Sdk.CoolQ.Model.StrangerInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.StrangerInfo"/> 实例是否具有相同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值相同，或两者均为 <see langword="null"/>，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.CoolQ.Model.StrangerInfo.op_Inequality(SharpQ.Sdk.CoolQ.Model.StrangerInfo,SharpQ.Sdk.CoolQ.Model.StrangerInfo)">
+            <summary>
+            确定两个指定的 <see cref="T:SharpQ.Sdk.CoolQ.Model.StrangerInfo"/> 实例是否具有不同的值
+            </summary>
+            <param name="a">要比较的第一个对象</param>
+            <param name="b">要比较的第二个对象</param>
+            <returns>如果是 a 与 b 的值不同，则为 <see langword="true"/>；否则为 <see langword="false"/></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.Length(System.IO.BinaryReader)">
+            <summary>
+            获取基础流的剩余长度
+            </summary>
+            <param name="binary"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadAll_Ex(System.IO.BinaryReader)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取所有字节。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <returns>读入 buffer 的字节数。 如果可用的字节没有请求的那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadBin_Ex(System.IO.BinaryReader,System.Int64)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取指定字节长度。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="len">要读取的字节数。</param>
+            <returns>读入 buffer 的字节数。 如果可用的字节没有请求的那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">len 为负数。</exception>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadInt16_Ex(System.IO.BinaryReader)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取 2 字节长度并反序为 <see cref="T:System.Int32"/> 值。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <returns>读入 2 字节的结果值，如果可用的字节没有那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadInt32_Ex(System.IO.BinaryReader)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取 4 字节长度并反序为 <see cref="T:System.Int32"/> 值。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <returns>读入 4 字节的结果值，如果可用的字节没有那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadInt64_Ex(System.IO.BinaryReader)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取 8 字节长度并反序为 <see cref="T:System.Int64"/> 值。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <returns>读入 8 字节的结果值，如果可用的字节没有那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadToken_Ex(System.IO.BinaryReader)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取指定字节长度。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <returns>读入 buffer 的字节数。 如果可用的字节没有请求的那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">len 为负数。</exception>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryReaderUtility.ReadString_Ex(System.IO.BinaryReader,System.Text.Encoding)">
+            <summary>
+            从字节数组中的指定点开始，从流中读取指定编码的字符串。
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="encoding"></param>
+            <returns>读入 buffer 的字节数。 如果可用的字节没有请求的那么多，此数可能小于所请求的字节数；如果到达了流的末尾，此数可能为零。</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">len 为负数。</exception>
+            <exception cref="T:System.ArgumentException">已解码要读取的字符数超过了边界。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryWriterUtility.Write_Ex(System.IO.BinaryWriter,System.Int16)">
+            <summary>
+            将写入基础流的 <see cref="T:System.Int16"/> 数值
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="value">要写入的值</param>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.ArgumentNullException">buffer 为 null。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryWriterUtility.Write_Ex(System.IO.BinaryWriter,System.Int32)">
+            <summary>
+            将写入基础流的 <see cref="T:System.Int32"/> 数值
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="value">要写入的值</param>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.ArgumentNullException">buffer 为 null。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryWriterUtility.Write_Ex(System.IO.BinaryWriter,System.Int64)">
+            <summary>
+            将写入基础流的 <see cref="T:System.Int64"/> 数值
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="value">要写入的值</param>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.ArgumentNullException">buffer 为 null。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryWriterUtility.Write_Ex(System.IO.BinaryWriter,System.String)">
+            <summary>
+            将写入基础流的 <see cref="T:System.String"/> 数值
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+            <param name="value">要写入的值</param>
+            <exception cref="T:System.IO.IOException">出现 I/O 错误。</exception>
+            <exception cref="T:System.ObjectDisposedException">流已关闭。</exception>
+            <exception cref="T:System.ArgumentNullException">buffer 为 null。</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.BinaryWriterUtility.ToArray(System.IO.BinaryWriter)">
+            <summary>
+            将基础流转换为相同的字节数组
+            </summary>
+            <param name="binary">基础 <see cref="T:System.IO.BinaryWriter"/> 对象</param>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.DateTimeUtility.GetDateTime(System.Int32)">
+            <summary>
+            以当前计算机时区为基准, 将 <see cref="T:System.Int32"/> 时间戳转换为以 "1970年1月1日" 为起始点的 <see cref="T:System.DateTime"/> 类型的标准时间
+            </summary>
+            <param name="unixTime">要转换的 UNIX 时间戳</param>
+            <returns>当前计算机时区的标准时间</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">unixTime 小于 0</exception>
+        </member>
+        <member name="M:SharpQ.Sdk.Utility.EnumUtility.GetDescription(System.Enum)">
+            <summary>
+            获取枚举成员上的 <see cref="T:System.ComponentModel.DescriptionAttribute"/> 标记的值
+            </summary>
+            <param name="value">要获取标记的枚举值</param>
+            <returns>如果成功获取标记, 则为标记 <see cref="P:System.ComponentModel.DescriptionAttribute.Description"/> 的值, 否则为 <see cref="F:System.String.Empty"/></returns>
+        </member>
+    </members>
+</doc>
