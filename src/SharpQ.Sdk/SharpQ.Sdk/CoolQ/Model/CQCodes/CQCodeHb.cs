@@ -28,7 +28,7 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		public CQCodeHb (string text)
 			: base (text)
 		{
-			base.ThrowKeyNotFound (CQCodeKeys.Title)
+			base.ThrowKeyNotFound (CQCodeKeys.Title);
 		}
 		#endregion
 

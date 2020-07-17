@@ -17,8 +17,5 @@
 		<Company>robot-net</Company>
 		<Description>SharpQ 的 Sdk 依赖项目</Description>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="CoolQ\Model\CQCodes\ve-7E60.tmp" />
-	</ItemGroup>
 
 </Project>
