@@ -16,12 +16,12 @@ namespace SharpQ.Sdk.CoolQ.Model.CQCodes
 		/// </summary>
 		Rock = 0,
 		/// <summary>
-		/// 表示猜拳结果是 "布"
-		/// </summary>
-		Paper = 1,
-		/// <summary>
 		/// 表示猜拳结果是 "剪刀"
 		/// </summary>
-		Scissors = 2
+		Scissors = 1,
+		/// <summary>
+		/// 表示猜拳结果是 "布"
+		/// </summary>
+		Paper = 2
 	}
 }
